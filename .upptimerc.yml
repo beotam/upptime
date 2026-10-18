@@ -23,6 +23,249 @@ status-website:
       href: /
     - title: GitHub
       href: https://github.com/$OWNER/$REPO
+  css: |
+    /* === BEOTAM STATUS - MODERN RESPONSIVE STYLESHEET === */
+    :root {
+      --bt-radius: 12px;
+      --bt-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    html, body {
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    body {
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* 1. Fluid Container & Padding */
+    .container {
+      width: 100% !important;
+      max-width: 860px !important;
+      margin: 0 auto !important;
+      padding: 0 clamp(14px, 4vw, 28px) !important;
+    }
+
+    /* 2. Responsive Navigation */
+    nav {
+      padding: 0.75rem 0 !important;
+      border-bottom: 1px solid rgba(127, 127, 127, 0.15) !important;
+      backdrop-filter: blur(10px);
+    }
+    nav .container {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      flex-wrap: wrap !important;
+      gap: 0.75rem !important;
+    }
+    nav a.logo {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 0.6rem !important;
+      font-weight: 700 !important;
+      font-size: clamp(1.05rem, 3vw, 1.25rem) !important;
+      text-decoration: none !important;
+      letter-spacing: -0.01em !important;
+    }
+    nav a.logo img {
+      width: 28px !important;
+      height: 28px !important;
+      border-radius: 6px !important;
+    }
+    nav ul {
+      display: flex !important;
+      align-items: center !important;
+      gap: 0.4rem !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      list-style: none !important;
+    }
+    nav ul li a {
+      display: inline-flex !important;
+      align-items: center !important;
+      padding: 6px 14px !important;
+      border-radius: 8px !important;
+      min-height: 38px !important;
+      font-size: 0.9rem !important;
+      font-weight: 500 !important;
+      text-decoration: none !important;
+      transition: var(--bt-transition) !important;
+    }
+    nav ul li a:hover {
+      background: rgba(127, 127, 127, 0.1) !important;
+    }
+
+    /* 3. Header & Fluid Typography */
+    header {
+      margin: clamp(1.5rem, 4vw, 2.75rem) 0 clamp(1rem, 3vw, 2rem) 0 !important;
+    }
+    header h1 {
+      font-size: clamp(1.45rem, 4.8vw, 2.4rem) !important;
+      font-weight: 800 !important;
+      line-height: 1.25 !important;
+      margin-bottom: 0.65rem !important;
+      letter-spacing: -0.025em !important;
+      word-break: break-word !important;
+    }
+    header p.lead {
+      font-size: clamp(0.95rem, 2.2vw, 1.15rem) !important;
+      line-height: 1.65 !important;
+      opacity: 0.85 !important;
+      max-width: 680px !important;
+      margin: 0 !important;
+    }
+
+    /* 4. Time Range Filter Pills (.f.changed & form.f.r) */
+    .f.changed {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      flex-wrap: wrap !important;
+      gap: 0.85rem !important;
+      margin: 2rem 0 1rem 0 !important;
+    }
+    .f.changed h2 {
+      margin: 0 !important;
+      font-size: clamp(1.2rem, 3vw, 1.55rem) !important;
+      font-weight: 700 !important;
+      letter-spacing: -0.015em !important;
+    }
+    form.f.r {
+      display: flex !important;
+      align-items: center !important;
+      flex-wrap: wrap !important;
+      gap: 0.35rem !important;
+      margin: 0 !important;
+      padding: 3px !important;
+      background: rgba(127, 127, 127, 0.08) !important;
+      border-radius: 9999px !important;
+    }
+    form.f.r div {
+      display: inline-block !important;
+    }
+    form.f.r input[type="radio"] {
+      position: absolute !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+    form.f.r label {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      padding: 5px 12px !important;
+      border-radius: 9999px !important;
+      font-size: 0.82rem !important;
+      font-weight: 600 !important;
+      cursor: pointer !important;
+      transition: var(--bt-transition) !important;
+      min-width: 38px !important;
+      min-height: 28px !important;
+      user-select: none !important;
+    }
+    form.f.r input[type="radio"]:checked + label {
+      background: #01a3a4 !important;
+      color: #ffffff !important;
+      box-shadow: 0 2px 8px rgba(1, 163, 164, 0.35) !important;
+    }
+
+    /* 5. Status Cards (article) */
+    article {
+      border-radius: var(--bt-radius) !important;
+      padding: clamp(0.85rem, 2.5vw, 1.35rem) !important;
+      margin-bottom: 0.85rem !important;
+      border: 1px solid rgba(127, 127, 127, 0.18) !important;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+      transition: var(--bt-transition) !important;
+      overflow: hidden !important;
+    }
+    article:hover {
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08) !important;
+      transform: translateY(-1px) !important;
+    }
+    article .f {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      flex-wrap: wrap !important;
+      gap: 0.6rem !important;
+    }
+    article h4 {
+      font-size: clamp(1rem, 2.6vw, 1.25rem) !important;
+      font-weight: 700 !important;
+      margin: 0 !important;
+      word-break: break-word !important;
+    }
+    .tag {
+      display: inline-flex !important;
+      align-items: center !important;
+      padding: 4px 10px !important;
+      border-radius: 9999px !important;
+      font-size: 0.72rem !important;
+      font-weight: 700 !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.04em !important;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+    }
+
+    /* 6. Sparkline Charts & Graphs */
+    article .graph,
+    article img,
+    article svg,
+    article canvas {
+      max-width: 100% !important;
+      height: auto !important;
+      display: block !important;
+      border-radius: 6px !important;
+    }
+
+    /* 7. Tables & Horizontal Scroll Container */
+    section {
+      width: 100% !important;
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+    }
+
+    /* 8. Modern Footer */
+    footer {
+      padding: 2.5rem 0 3.5rem 0 !important;
+      font-size: 0.88rem !important;
+      opacity: 0.8 !important;
+    }
+
+    /* 9. Mobile Viewport Specifics (< 640px) */
+    @media (max-width: 640px) {
+      body {
+        font-size: 14px;
+      }
+      .f.changed {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 0.65rem !important;
+      }
+      form.f.r {
+        width: 100% !important;
+        justify-content: space-between !important;
+      }
+      form.f.r label {
+        flex: 1 !important;
+        text-align: center !important;
+      }
+      article .f {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+      }
+      article .f > div:last-child {
+        width: 100% !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+      }
+    }
 
 # Upptime also supports notifications, assigning issues, and more
 # See https://upptime.js.org/docs/configuration
