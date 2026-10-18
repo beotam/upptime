@@ -10,16 +10,59 @@ sites:
   - name: BeoTam Media
     url: https://media.beotam.com
 
+i18n:
+  activeIncidents: Sự cố đang diễn ra
+  allSystemsOperational: Tất cả hệ thống đang hoạt động bình thường
+  incidentReport: "Báo cáo sự cố #$NUMBER →"
+  activeIncidentSummary: Khởi tạo lúc $DATE với $POSTS phản hồi
+  incidentTitle: Chi tiết sự cố #$NUMBER
+  incidentDetails: Chi tiết sự cố
+  incidentFixed: Đã khắc phục
+  incidentOngoing: Đang xử lý
+  incidentOpenedAt: Bắt đầu lúc
+  incidentClosedAt: Khắc phục lúc
+  incidentViewOnGitHub: Xem và theo dõi trên GitHub
+  incidentCommentSummary: Đăng lúc $DATE bởi $AUTHOR
+  incidentBack: ← Quay lại danh sách sự cố
+  pastIncidents: Lịch sử sự cố
+  pastIncidentsResolved: Đã khắc phục trong $MINUTES phút với $POSTS phản hồi
+  liveStatus: Trạng thái trực tiếp
+  overallUptime: "Thời gian hoạt động: $UPTIME"
+  overallUptimeTitle: Thời gian hoạt động
+  averageResponseTime: "Phản hồi trung bình: $TIMEms"
+  averageResponseTimeTitle: Thời gian phản hồi
+  sevelDayResponseTime: Thời gian phản hồi 7 ngày
+  responseTimeMs: Thời gian phản hồi (ms)
+  up: Hoạt động
+  down: Gián đoạn
+  degraded: Chậm
+  ms: ms
+  loading: Đang tải dữ liệu...
+  navGitHub: GitHub
+  footer: Trang này là [mã nguồn mở]($REPO), vận hành bởi [Upptime](https://upptime.js.org)
+  rateLimitExceededTitle: Vượt quá giới hạn truy cập
+  rateLimitExceededIntro: Bạn đã vượt quá số lượt truy cập trong một giờ. Vui lòng chờ trước khi truy cập lại hoặc sử dụng GitHub Personal Access Token.
+  pastScheduledMaintenance: Lịch bảo trì đã hoàn tất
+  scheduledMaintenance: Lịch bảo trì định kỳ
+  incidentCompleted: Hoàn tất
+  incidentScheduled: Đã lên lịch
+  duration24H: 24h
+  duration7D: 7 ngày
+  duration30D: 30 ngày
+  duration1Y: 1 năm
+  durationAll: Tất cả
+  locale: vi-VN
+
 status-website:
   # Add your custom domain name, or remove the `cname` line if you don't have a domain
   # Uncomment the `baseUrl` line if you don't have a custom domain and add your repo name there
   cname: status.beotam.com
-  logoUrl: https://raw.githubusercontent.com/upptime/upptime.js.org/master/static/img/icon.svg
+  logoUrl: https://raw.githubusercontent.com/beotam/upptime/master/assets/logo.svg
   name: BeoTam Status
   introTitle: "**BeoTam Services** Real-time Uptime Monitor"
   introMessage: Hệ thống theo dõi trạng thái hoạt động tự động của các dịch vụ BeoTam (beotam.com, admin.beotam.com, media.beotam.com).
   navbar:
-    - title: Status
+    - title: Trạng thái
       href: /
     - title: GitHub
       href: https://github.com/$OWNER/$REPO
@@ -73,9 +116,52 @@ status-website:
       letter-spacing: -0.01em !important;
     }
     nav a.logo img {
-      width: 28px !important;
-      height: 28px !important;
+      height: 32px !important;
+      width: auto !important;
+      max-width: 140px !important;
+      object-fit: contain !important;
+      border-radius: 4px !important;
+      transition: var(--bt-transition) !important;
+    }
+    @media (prefers-color-scheme: dark) {
+      nav a.logo img {
+        filter: brightness(0) invert(1) !important;
+      }
+    }
+    /* Language Switcher Pill */
+    .lang-pill {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 3px !important;
+      padding: 3px 8px !important;
+      border-radius: 9999px !important;
+      border: 1px solid rgba(127, 127, 127, 0.25) !important;
+      background: rgba(127, 127, 127, 0.08) !important;
+      font-size: 0.78rem !important;
+      font-weight: 700 !important;
+      margin-left: 0.25rem !important;
+    }
+    .lang-btn {
+      background: transparent !important;
+      border: none !important;
+      cursor: pointer !important;
+      padding: 2px 7px !important;
+      border-radius: 4px !important;
+      font-size: 0.78rem !important;
+      font-weight: 700 !important;
+      color: inherit !important;
+      opacity: 0.55 !important;
+      transition: var(--bt-transition) !important;
+    }
+    .lang-btn.active {
+      background: #01a3a4 !important;
+      color: #ffffff !important;
+      opacity: 1 !important;
       border-radius: 6px !important;
+    }
+    .lang-sep {
+      opacity: 0.3 !important;
+      font-size: 0.7rem !important;
     }
     nav ul {
       display: flex !important;
@@ -266,6 +352,75 @@ status-website:
         align-items: center !important;
       }
     }
+  js: |
+    window.addEventListener('DOMContentLoaded', () => {
+      const initLang = () => {
+        const navUl = document.querySelector('nav ul');
+        if (!navUl || document.getElementById('bt-lang-switch')) return;
+        const li = document.createElement('li');
+        li.id = 'bt-lang-switch';
+        li.innerHTML = '<div class="lang-pill"><button id="bt-btn-vi" class="lang-btn active">VI</button><span class="lang-sep">|</span><button id="bt-btn-en" class="lang-btn">EN</button></div>';
+        navUl.appendChild(li);
+
+        const dictEn = {
+          'Trạng thái': 'Status',
+          'Tất cả hệ thống đang hoạt động bình thường': 'All systems are operational',
+          'Trạng thái trực tiếp': 'Live Status',
+          'Sự cố đang diễn ra': 'Active Incidents',
+          'Lịch sử sự cố': 'Past Incidents',
+          'Đang tải dữ liệu...': 'Loading...',
+          'Hoạt động': 'Up',
+          'Gián đoạn': 'Down',
+          'Chậm': 'Degraded',
+          'Thời gian hoạt động': 'Overall uptime',
+          'Thời gian phản hồi': 'Response time'
+        };
+        const dictVi = {
+          'Status': 'Trạng thái',
+          'All systems are operational': 'Tất cả hệ thống đang hoạt động bình thường',
+          'Live Status': 'Trạng thái trực tiếp',
+          'Active Incidents': 'Sự cố đang diễn ra',
+          'Past Incidents': 'Lịch sử sự cố',
+          'Loading...': 'Đang tải dữ liệu...',
+          'Up': 'Hoạt động',
+          'Down': 'Gián đoạn',
+          'Degraded': 'Chậm',
+          'Overall uptime': 'Thời gian hoạt động',
+          'Response time': 'Thời gian phản hồi'
+        };
+
+        const setLang = (lang) => {
+          localStorage.setItem('beotam_lang', lang);
+          const btnVi = document.getElementById('bt-btn-vi');
+          const btnEn = document.getElementById('bt-btn-en');
+          if (btnVi && btnEn) {
+            btnVi.classList.toggle('active', lang === 'vi');
+            btnEn.classList.toggle('active', lang === 'en');
+          }
+          const dict = lang === 'en' ? dictEn : dictVi;
+          const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+          let node;
+          while (node = walker.nextNode()) {
+            const val = node.nodeValue.trim();
+            if (dict[val]) {
+              node.nodeValue = node.nodeValue.replace(val, dict[val]);
+            }
+          }
+        };
+
+        const btnViEl = document.getElementById('bt-btn-vi');
+        const btnEnEl = document.getElementById('bt-btn-en');
+        if (btnViEl) btnViEl.onclick = (e) => { e.preventDefault(); setLang('vi'); };
+        if (btnEnEl) btnEnEl.onclick = (e) => { e.preventDefault(); setLang('en'); };
+
+        const cur = localStorage.getItem('beotam_lang') || 'vi';
+        if (cur === 'en') setLang('en');
+      };
+      initLang();
+      setTimeout(initLang, 1000);
+      setTimeout(initLang, 2500);
+    });
 
 # Upptime also supports notifications, assigning issues, and more
 # See https://upptime.js.org/docs/configuration
+
