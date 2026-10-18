@@ -13,15 +13,14 @@ sites:
 status-website:
   # Add your custom domain name, or remove the `cname` line if you don't have a domain
   # Uncomment the `baseUrl` line if you don't have a custom domain and add your repo name there
-  # cname: demo.upptime.js.org
-  baseUrl: /upptime
+  cname: status.beotam.com
   logoUrl: https://raw.githubusercontent.com/upptime/upptime.js.org/master/static/img/icon.svg
   name: BeoTam Status
   introTitle: "**BeoTam Services** Real-time Uptime Monitor"
   introMessage: Hệ thống theo dõi trạng thái hoạt động tự động của các dịch vụ BeoTam (beotam.com, admin.beotam.com, media.beotam.com).
   navbar:
     - title: Status
-      href: /upptime/
+      href: /
     - title: GitHub
       href: https://github.com/$OWNER/$REPO
 
