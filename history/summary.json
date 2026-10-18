@@ -10,11 +10,11 @@
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
-    "time": 1866,
-    "timeDay": 1866,
-    "timeWeek": 1866,
-    "timeMonth": 1866,
-    "timeYear": 1866,
+    "time": 1829,
+    "timeDay": 1829,
+    "timeWeek": 1829,
+    "timeMonth": 1829,
+    "timeYear": 1829,
     "dailyMinutesDown": {}
   },
   {
@@ -23,18 +23,18 @@
     "icon": "https://icons.duckduckgo.com/ip3/admin.beotam.com.ico",
     "slug": "beo-tam-admin",
     "status": "down",
-    "uptime": "38.78%",
-    "uptimeDay": "38.78%",
-    "uptimeWeek": "38.78%",
-    "uptimeMonth": "38.78%",
-    "uptimeYear": "38.78%",
+    "uptime": "1.41%",
+    "uptimeDay": "1.41%",
+    "uptimeWeek": "1.41%",
+    "uptimeMonth": "1.41%",
+    "uptimeYear": "1.41%",
     "time": 0,
     "timeDay": 0,
     "timeWeek": 0,
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2026-10-18": 1
+      "2026-10-18": 24
     }
   },
   {
@@ -43,18 +43,18 @@
     "icon": "https://icons.duckduckgo.com/ip3/media.beotam.com.ico",
     "slug": "beo-tam-media",
     "status": "down",
-    "uptime": "70.04%",
-    "uptimeDay": "70.04%",
-    "uptimeWeek": "70.04%",
-    "uptimeMonth": "70.04%",
-    "uptimeYear": "70.04%",
-    "time": 0,
-    "timeDay": 0,
-    "timeWeek": 0,
-    "timeMonth": 0,
-    "timeYear": 0,
+    "uptime": "1.48%",
+    "uptimeDay": "1.48%",
+    "uptimeWeek": "1.48%",
+    "uptimeMonth": "1.48%",
+    "uptimeYear": "1.48%",
+    "time": 389,
+    "timeDay": 389,
+    "timeWeek": 389,
+    "timeMonth": 389,
+    "timeYear": 389,
     "dailyMinutesDown": {
-      "2026-10-18": 0
+      "2026-10-18": 24
     }
   }
 ]
