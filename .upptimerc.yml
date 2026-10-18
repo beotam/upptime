@@ -9,6 +9,8 @@ sites:
     url: https://admin.beotam.com
   - name: BeoTam Media
     url: https://media.beotam.com
+  - name: BeoTam New
+    url: https://new.beotam.com/
 
 i18n:
   activeIncidents: Sự cố đang diễn ra
@@ -60,7 +62,7 @@ status-website:
   logoUrl: https://raw.githubusercontent.com/beotam/upptime/master/assets/logo.svg
   name: BeoTam Status
   introTitle: "**BeoTam Services** Real-time Uptime Monitor"
-  introMessage: Hệ thống theo dõi trạng thái hoạt động tự động của các dịch vụ BeoTam (beotam.com, admin.beotam.com, media.beotam.com).
+  introMessage: Hệ thống theo dõi trạng thái hoạt động tự động của các dịch vụ BeoTam (beotam.com, admin.beotam.com, media.beotam.com, new.beotam.com).
   navbar:
     - title: Trạng thái
       href: /
